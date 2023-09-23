@@ -1,6 +1,6 @@
 # Terraform Beginner Bootcamp 2023
 
-## 1-semantic-version
+## 1-semantic-version :mage:
 This project is going to utilize semantic versioning for it's tagging
 [semver.org](https://semver.org/)
 
