@@ -139,8 +139,30 @@ This command will ensure that all future workspaces launched will have these env
 
 You can also set environment variables in the `.gitpod.yml` file, but it's important to remember that this method should only be used for non-sensitive environment variables.
 
+### AWS CLI Installation
 
+AWS CLI is installed for the project via the bash script `./bin/install_aws_cli`
 
+[AWS CLI Installation](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+[Environment variables to configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+To verify whether our AWS credentials are configured correctly, you can use the following AWS CLI command:
+
+```sh
+aws sts get-caller-identity
+```
+
+If successful, you should receive a JSON payload that resembles the following:
+
+```sh
+{
+    "UserId": "AIDA5FKRAJAPX4J2RAJA5GQO7",
+    "Account": "9712345467835",
+    "Arn": "arn:aws:iam::9712345467835:user/raja"
+}
+```
+
+To use the AWS CLI, we'll need to generate AWS CLI credentials from an IAM User.
 
 
 
