@@ -193,6 +193,15 @@ Terraform sources its providers and modules from the Terraform Registry, located
  `Terraform Directory`: The `.terraform` directory contains Terraform provider binaries.
 
 
+ ### Intro to use Terraform resources
+
+ [Terraform random resource](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string)
+ 
+ [Terraform aws resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)
+
+ [s3 Bucket Naming Rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html?icmpid=docs_amazons3_console)
+
+
 
 
 
