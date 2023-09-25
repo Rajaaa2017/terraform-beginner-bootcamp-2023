@@ -202,6 +202,36 @@ Terraform sources its providers and modules from the Terraform Registry, located
  [s3 Bucket Naming Rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html?icmpid=docs_amazons3_console)
 
 
+### Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to execute `terraform login` it opens a web-based interface within a Bash terminal for token generation. However, this feature doesn't function as expected when using Gitpod in the VSCode browser environment.
+
+As a workaround, you can manually generate a token within Terraform Cloud
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+```
+
+We can manually open the file like:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Please provide the following code and make sure to replace 'YOUR_API_TOKEN' with your actual token in the file:
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR_API_TOKEN"
+    }
+  }
+}
+
+```
+
 
 
 

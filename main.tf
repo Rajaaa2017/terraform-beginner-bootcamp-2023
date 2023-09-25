@@ -9,6 +9,13 @@ terraform {
       version = "5.16.2"
     }
   }
+  cloud {
+    organization = "bootcamp-demox"
+
+    workspaces {
+       name = "Terra-house-1"
+    }
+  }
 }
 
 provider "aws" {
