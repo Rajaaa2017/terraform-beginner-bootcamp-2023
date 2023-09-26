@@ -248,6 +248,44 @@ Please provide the following code and make sure to replace 'YOUR_API_TOKEN' with
 
 We've automated the token configuration process using the Bash script: [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
 
+### Automated tf alias creation with Bash script: [bin/set_tf_alias](bin/set_tf_alias)
+
+### Adding an Alias for Terraform in `~/.bash_profile`
+
+To create an alias for Terraform manually, follow the below steps:
+
+1. Open `~/.bash_profile`: You can edit the `~/.bash_profile` file by running the following command in your terminal:
+
+```sh
+open ~/.bash_profile
+```
+
+2. Define the Alias: Inside the `~/.bash_profile` file, add the alias line according to your preference. 
+
+- For example: Customize the alias (tf in this example) as per your requirements.
+
+```sh
+alias tf="terraform"
+```
+
+3. Reload the Bash Profile: To apply the changes immediately, you need to reload the Bash profile. Run the following command:
+
+```sh
+source ~/.bash_profile
+```
+
+4. Verify the Alias: To verify that the alias has been set up correctly, simply type `tf` in your terminal:
+
+```sh
+tf
+```
+
+If the alias is configured properly, it should execute Terraform commands as expected.
+
+
+
+
+
 
 
 
