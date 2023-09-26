@@ -231,7 +231,22 @@ Please provide the following code and make sure to replace 'YOUR_API_TOKEN' with
 }
 
 ```
+### Git Workflow for Transferring Changes Between Branches
 
+**Scenario**: You've made changes in one branch but need them in another. Follow this straightforward process to make the correction:
+
+1.`Stash Your Work`: Whether the changes were accidental or intentional but in the wrong branch, start by using `git stash` in the branch where you made the modifications. This action temporarily saves your work.
+
+2.`Apply the Stash`: Now, switch to the branch where you intend to have these changes. Utilize `git stash apply` to seamlessly transfer the saved changes to the desired branch.
+
+3.`Commit and Push`: After successfully applying the stash in the correct branch, proceed to commit and push the changes from within the same desired branch as usual.
+
+4.`Merge`: If these changes are meant to be incorporated into the main/master branch, create a Pull Request (PR) to initiate the merging process. This step ensures that the changes are integrated into the central codebase.
+
+
+### Automated Token Configuration
+
+We've automated the token configuration process using the Bash script: [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
 
 
 
