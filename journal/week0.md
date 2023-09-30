@@ -1,15 +1,15 @@
 # Terraform Beginner Bootcamp 2023 - Week0
 
-- [1-semantic-version :mage:](#1-semantic-version--mage-)
+- [1-semantic-versioning](#1-semantic-version)
 - [3-refactor-terraform-cli](#3-refactor-terraform-cli)
 - [Install Terraform CLI](#install-terraform-cli)
   * [Considerations with Terraform cli changes](#considerations-with-terraform-cli-changes)
   * [Considerations for Linux distribution](#considerations-for-linux-distribution)
   * [Refactoring into BASH scripts](#refactoring-into-bash-scripts)
-  * [Shebang (sha-bang) considerations](#shebang--sha-bang--considerations)
+  * [Shebang (sha-bang) considerations](#shebang-sha-bang-considerations)
   * [Executions considerations](#executions-considerations)
   * [Linux permission considerations](#linux-permission-considerations)
-  * [Gitpod lifecycle (before init command)](#gitpod-lifecycle--before-init-command-)
+  * [Gitpod lifecycle (before init command)](#gitpod-lifecycle-before-init-command)
   * [Working with Environment Variables](#working-with-environment-variables)
   * [env command](#env-command)
   * [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
@@ -24,10 +24,8 @@
   * [Issues with Terraform Cloud Login and Gitpod Workspace](#issues-with-terraform-cloud-login-and-gitpod-workspace)
   * [Git Workflow for Transferring Changes Between Branches](#git-workflow-for-transferring-changes-between-branches)
   * [Automated Token Configuration](#automated-token-configuration)
-  * [Automated tf alias creation with Bash script: [bin/set_tf_alias](bin/set_tf_alias)](#automated-tf-alias-creation-with-bash-script---bin-set-tf-alias--bin-set-tf-alias-)
-  * [Adding an Alias for Terraform in `~/.bash_profile`](#adding-an-alias-for-terraform-in----bash-profile-)
 
-## 1-semantic-version :mage:
+## 1-semantic-version
 This project is going to utilize semantic versioning for it's tagging
 [semver.org](https://semver.org/)
 
