@@ -276,3 +276,55 @@ When working with JSON in Terraform, you can use the jsonencode function to gene
 Plain data values such as Local Values and Input Variables don't have any side-effects to plan against and so they aren't valid in replace_triggered_by. You can use terraform_data's behavior of planning an action each time input changes to indirectly use a plain value to trigger replacement.
 
 [The terraform_data Managed Resource Type](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
+
+## Provisioners
+
+Provisioners in Terraform enable the execution of commands on compute instances, such as AWS CLI commands. While they are available, HashiCorp does not recommend their use, as Configuration Management tools like Ansible are generally better suited for such tasks.
+
+[Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)
+
+### Local-exec
+
+`local-exec` provisioners allow you to execute commands on the machine running Terraform commands, such as plan and apply.
+
+[Local-exec](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec)
+
+```tf
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
+}
+```
+
+### Remote-exec
+
+`remote-exec` provisioners enable the execution of commands on a targeted remote machine. You'll need to provide credentials, such as SSH, to access and interact with the remote machine.
+
+[Remote-exec](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec)
+
+```tf
+resource "aws_instance" "web" {
+  # ...
+
+  # Establishes connection to be used by all
+  # generic remote provisioners (i.e. file/remote-exec)
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = var.root_password
+    host     = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+}
+```
+
+
