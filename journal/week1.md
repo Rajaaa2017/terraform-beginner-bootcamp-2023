@@ -206,4 +206,30 @@ Special Path Variables in Terraform:
 [Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references)
 
 
+## Fixing Tags
+
+[How to Delete Local and Remote Tags on Git](https://devconnected.com/how-to-delete-local-and-remote-tags-on-git/)
+
+Locally delete a tag
+
+```sh
+git tag -d <tag_name>
+```
+
+Remotely delete tag
+
+```sh
+git push --delete origin tagname
+```
+
+Checkout the commit that you want to retag. Retrieve the commit SHA from your Github history.
+
+```sh
+git checkout <SHA> #replace your SHA ID from the git repo of your commit that you want to retag/correct the tag
+git tag M.M.P #replace the tag ID of your choice
+git push --tags
+git checkout main
+```
+
+
 
