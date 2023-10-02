@@ -231,5 +231,39 @@ git push --tags
 git checkout main
 ```
 
+## Terraform Locals
 
+Locals in Terraform allow you to define local variables, which are particularly useful for transforming data into another format and for referencing variables within your configurations.
+
+```tf
+locals {
+  s3_origin_id = "MyS3Origin"
+}
+```
+[Local Values](https://developer.hashicorp.com/terraform/language/values/locals)
+
+## Terraform Data Sources
+
+Terraform data sources enable you to fetch information from cloud resources without the need to import them directly. They provide a way to reference and use data from existing cloud resources within your Terraform configuration.
+
+```tf
+data "aws_caller_identity" "current" {}
+
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+```
+
+[Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+## Working with JSON
+
+When working with JSON in Terraform, you can use the jsonencode function to generate JSON policies directly within your HCL (HashiCorp Configuration Language) code.
+
+```tf
+> jsonencode({"hello"="world"})
+{"hello":"world"}
+```
+
+[jsonencode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
 
