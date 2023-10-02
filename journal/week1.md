@@ -132,3 +132,43 @@ If someone modifies or deletes cloud resources manually through ClickOps, Terraf
 ## What if the terraform plan output does not match with your expectations ?  
 
 :exploding_head: Take backup and work with the team if you are not sure.
+
+
+## Fix using Terraform Refresh
+
+```sh
+terraform apply -refresh-only -auto-approve
+```
+
+## Terraform Modules
+
+### Terraform Module Structure
+
+Placing modules in a `modules` directory is a recommended practice for local module development. It enhances project organization and clearly signifies that the directory contains reusable Terraform modules. You're free to choose other names if preferred.
+
+### Passing Input Variables
+
+We can pass input variables to our module, and the module must declare these Terraform variables in its own `variables.tf` file.
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+}
+```
+### Modules Sources
+
+Using the source attribute, you can import Terraform modules from various locations.
+
+Ex:
+1.Locally (in your own project directory)
+2.GitHub repositories (by specifying the GitHub URL).
+3.The Terraform Registry (by specifying the module's namespace and name)
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+```
+[Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
