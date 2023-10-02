@@ -172,3 +172,38 @@ module "terrahouse_aws" {
 }
 ```
 [Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+## Considerations when using ChatGPT to write Terraform
+
+When leveraging ChatGPT to write Terraform code, it's important to bear in mind that LLMs (large language models), such as ChatGPT, might not have access to the most current Terraform documentation and updates. 
+
+Consequently, the generated code may contain outdated examples, potentially impacting Terraform providers, which could be deprecated.
+
+## Working with Files in Terraform
+
+### File exists function
+
+This is a built in terraform function to check the existance of a file.
+
+```tf
+condition = fileexists(var.error_html_filepath)
+```
+
+[File exists function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+
+### Filemd5
+
+[Filemd5 Example](https://developer.hashicorp.com/terraform/language/functions/filemd5)
+
+### Path Variable
+
+Special Path Variables in Terraform:
+
+**path.module**: This variable provides the path to the current module. It's useful when you need to reference files or resources within the current module.
+
+**path.root**: This variable gives you the path to the root module. It's particularly handy when you need to access files or resources at the project's root level.
+
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references)
+
+
+
