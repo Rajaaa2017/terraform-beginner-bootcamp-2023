@@ -327,4 +327,16 @@ resource "aws_instance" "web" {
 }
 ```
 
+## For Each Expressions
+
+`for_each` expressions in Terraform enable you to iterate over complex data types.
+
+```sh
+[for s in var.list : upper(s)]
+```
+
+They are especially valuable when creating multiple instances of cloud resources, simplifying and reducing repetitive Terraform code.
+
+[For Each Expressions](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each)
+
 
