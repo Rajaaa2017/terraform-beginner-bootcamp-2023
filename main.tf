@@ -1,5 +1,13 @@
 terraform {
 
+    cloud {
+    organization = "bootcamp-demox"
+
+    workspaces {
+       name = "terraform-cloud"
+    }
+  }
+
 }
 
 module "terrahouse_aws" {
