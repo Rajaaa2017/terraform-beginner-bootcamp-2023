@@ -5,3 +5,11 @@ output "bucket_name" {
 output "website_endpoint" {
   value = aws_s3_bucket_website_configuration.website_configuration.website_endpoint
 }
+
+locals {
+  root_path = path.root
+}
+
+output "root_path" {
+  value = local.root_path
+}
