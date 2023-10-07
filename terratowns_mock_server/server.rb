@@ -20,7 +20,6 @@ class Home
   # https://guides.rubyonrails.org/active_record_validations.html
   include ActiveModel::Validations
 
-  
   # create some virtual attributes to stored on this object
   # This will set a getter and setter
   # eg. 
@@ -29,7 +28,6 @@ class Home
   # home.town() # getter
   attr_accessor :town, :name, :description, :domain_name, :content_version
 
-  
   validates :town, presence: true, inclusion: { in: [
     'melomaniac-mansion',
     'cooker-cove',
@@ -41,13 +39,13 @@ class Home
   validates :name, presence: true
   # visible to all users
   validates :description, presence: true
-  # We want to restrict access to this only from CloudFront
+  # we want to lock this down to only be from cloudfront
   validates :domain_name, 
     format: { with: /\.cloudfront\.net\z/, message: "domain must be from .cloudfront.net" }
     # uniqueness: true, 
-  
+
   # content version has to be an integer
-  # we will make sure it's an incremental version in the controller.
+  # we will make sure it an incremental version in the controller.
   validates :content_version, numericality: { only_integer: true }
 end
 
@@ -72,7 +70,7 @@ class TerraTownsMockServer < Sinatra::Base
       error 406, "expected Accept header to be application/json"
     end
   end
- 
+
   # return a harcoded access token
   def x_access_code
     return '9b49b3fb-b8e9-483c-b703-97ba88eef8e0'
@@ -89,7 +87,7 @@ class TerraTownsMockServer < Sinatra::Base
     if auth_header.nil? || !auth_header.start_with?("Bearer ")
       error 401, "a1000 Failed to authenicate, bearer token invalid and/or teacherseat_user_uuid invalid"
     end
-    
+
     # Does the token match the one in our database?
     # if we cant find it than return an error or if it doesn't match
     # code = access_code = token
@@ -97,12 +95,12 @@ class TerraTownsMockServer < Sinatra::Base
     if code != x_access_code
       error 401, "a1001 Failed to authenicate, bearer token invalid and/or teacherseat_user_uuid invalid"
     end
-    
+
     # was there a user_uuid in the body payload json?
     if params['user_uuid'].nil?
       error 401, "a1002 Failed to authenicate, bearer token invalid and/or teacherseat_user_uuid invalid"
     end
-    
+
     # the code and the user_uuid should be matching for user
     unless code == x_access_code && params['user_uuid'] == x_user_uuid
       error 401, "a1003 Failed to authenicate, bearer token invalid and/or teacherseat_user_uuid invalid"
@@ -116,7 +114,7 @@ class TerraTownsMockServer < Sinatra::Base
     # puts will print to the terminal similar to a print or console.log
     puts "# create - POST /api/homes"
 
-     # a begin/resurce is a try/catch, if an error occurs, result it.
+    # a begin/resurce is a try/catch, if an error occurs, result it.
     begin
       # Sinatra does not automatically part json bodys as params
       # like rails so we need to manuall parse it.
@@ -169,7 +167,7 @@ class TerraTownsMockServer < Sinatra::Base
       domain_name: domain_name,
       content_version: content_version
     }
-    
+
     # will jsut return uuid
     return { uuid: uuid }.to_json
   end
@@ -207,7 +205,6 @@ class TerraTownsMockServer < Sinatra::Base
     # Validate payload data
     name = payload["name"]
     description = payload["description"]
-    domain_name = payload["domain_name"]
     content_version = payload["content_version"]
 
     unless params[:uuid] == $home[:uuid]
@@ -216,9 +213,9 @@ class TerraTownsMockServer < Sinatra::Base
 
     home = Home.new
     home.town = $home[:town]
+    home.domain_name = $home[:domain_name]
     home.name = name
     home.description = description
-    home.domain_name = domain_name
     home.content_version = content_version
 
     unless home.valid?
@@ -238,10 +235,11 @@ class TerraTownsMockServer < Sinatra::Base
     if params[:uuid] != $home[:uuid]
       error 404, "failed to find home with provided uuid and bearer token"
     end
-    
+
     # delete from mock database
+    uuid = $home[:uuid]
     $home = {}
-    { message: "House deleted successfully" }.to_json
+    { uuid: uuid }.to_json
   end
 end
 
