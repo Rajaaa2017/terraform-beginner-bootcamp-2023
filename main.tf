@@ -36,7 +36,7 @@ to play (despite that old look graphics). This is my guide that will
 show you how to play arcanum without spoiling the plot.
 DESCRIPTION
   domain_name = module.home_arcanum_hosting.domain_name
-  town = "Melomaniac Mansion"
+  town = "melomaniac-mansion"
   content_version = var.arcanum.content_version
 }
 ### House II
