@@ -36,7 +36,7 @@ to play (despite that old look graphics). This is my guide that will
 show you how to play arcanum without spoiling the plot.
 DESCRIPTION
   domain_name = module.home_arcanum_hosting.domain_name
-  town = "Melomaniac Mansion"
+  town = "melomaniac-mansion"
   content_version = var.arcanum.content_version
 }
 ### House II
@@ -56,6 +56,6 @@ into Canada, I decided I would see how I could my own Paydays bars,
 and if they are most cost effective.
 DESCRIPTION
   domain_name = module.home_payday_hosting.domain_name
-  town = "missingo"
+  town = "video-valley"
   content_version = var.payday.content_version
 }
