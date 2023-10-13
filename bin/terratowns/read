@@ -6,8 +6,8 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-user_uuid="e328f4ab-b99f-421c-84c9-4ccea042c7d1" 
-token="9b49b3fb-b8e9-483c-b703-97ba88eef8e0"
+user_uuid="a9392f40-799c-4e49-a62f-fcda372e0f9e" 
+token="3b9fcf69-a3aa-4b83-ae88-04f3ca329b50"
 house_uuid="$1"
 
 # Enable printing of commands

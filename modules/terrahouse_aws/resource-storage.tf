@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "website_bucket" {
-  bucket = var.bucket_name
+  #bucket = var.bucket_name
 
     tags = {
     UserUUID       = var.user_uuid
@@ -83,4 +83,3 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
 resource "terraform_data" "content_version" {
   input = var.content_version
 }
-
